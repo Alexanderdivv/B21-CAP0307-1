@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FatigueApplication</string>
+    <string name="result">Result</string>
+    <string name="resultvalue">ResultValue</string>
+    <string name="identify">Identify</string>
+    <string name="menu">Menu</string>
+    <string name="notification">Notification</string>
+    <string name="ourteam">Team</string>
+    <string name="team">Team Member</string>
+    <string name="setting">Setting Notification</string>
+</resources>
