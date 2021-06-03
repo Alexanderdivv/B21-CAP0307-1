@@ -1,5 +1,6 @@
 package com.project1.fatigueapplication.view
 
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -52,9 +53,8 @@ class MainActivity : AppCompatActivity() {
             val picture = data?.getParcelableExtra<Bitmap>("data")
             imageView.setImageBitmap(picture)
         }
-        else if(requestCode == GALLERY_PICK_CODE){
-            val picture = data?.getParcelableExtra<Bitmap>("data")
-            imageView.setImageBitmap(picture)
+        else if(resultCode == Activity.RESULT_OK && requestCode == GALLERY_PICK_CODE){
+            imageView.setImageURI(data?.data)
         }
     }
 
@@ -63,9 +63,8 @@ class MainActivity : AppCompatActivity() {
         val string2: String= getString(R.string.team)
         when (item.itemId) {
             R.id.gallery -> {
-                if(checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
-                    val permission = arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
-                    requestPermissions(permission, PERMISSION_CODE)
+                if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) !=PackageManager.PERMISSION_GRANTED){
+                    ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), PERMISSION_CODE)
                 }
 
                 val intent = Intent(Intent.ACTION_PICK)

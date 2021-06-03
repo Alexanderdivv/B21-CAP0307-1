@@ -16,19 +16,19 @@ class OurteamActivity : AppCompatActivity() {
 
         val datauser = listOf<DataParcel>(
             DataParcel(
-                R.drawable.tyo,
+                R.drawable.ic_smile,
                 "Adwityo S.P.",
                 "A1171500",
                 "a1171500@bangkit.academy"
             ),
             DataParcel(
-                R.drawable.fikri,
+                R.drawable.ic_smile,
                 "Fikri Aziz Athoillah",
                 "A1091430",
                 "a1091430@bangkit.academy"
             ),
             DataParcel(
-                R.drawable.alex,
+                R.drawable.ic_smile,
                 "Alexander Diva Grael Bangun",
                 "C1191520",
                 "c1191520@bangkit.academy",
@@ -38,14 +38,7 @@ class OurteamActivity : AppCompatActivity() {
                 "Ervina Maharani",
                 "M0010018",
                 "m0010018@bangkit.academy"
-            ),
-            DataParcel(
-                R.drawable.ic_smile ,
-                "Amar Ma'ruf",
-                "M0121229",
-                "m0121229@bangkit.academy"
-            ),
-
+            )
         )
         val recyclerView = findViewById<RecyclerView>(R.id._imageRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
