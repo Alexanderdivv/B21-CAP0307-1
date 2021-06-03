@@ -7,8 +7,8 @@
     android:background="@color/background"
     tools:context=".view.MainActivity">
 
-    <com.wonderkiln.camerakit.CameraView
-        android:id="@+id/cameraView"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="350dp"
         android:layout_height="300dp"
         android:background="@color/white"
@@ -29,7 +29,7 @@
         android:layout_marginTop="50dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cameraView"/>
+        app:layout_constraintTop_toBottomOf="@+id/imageView"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonmb"
