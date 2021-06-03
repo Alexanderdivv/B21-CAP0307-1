@@ -10,4 +10,7 @@
     <string name="ourteam">Team</string>
     <string name="team">Team Member</string>
     <string name="setting">Setting Notification</string>
+    <string name="name">Name</string>
+    <string name="number">Number</string>
+    <string name="email">blablabla@email.com</string>
 </resources>
