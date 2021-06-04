@@ -10,4 +10,6 @@
     <string name="ourteam">Team</string>
     <string name="team">Team Member</string>
     <string name="setting">Setting Notification</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Add Photos</string>
 </resources>
