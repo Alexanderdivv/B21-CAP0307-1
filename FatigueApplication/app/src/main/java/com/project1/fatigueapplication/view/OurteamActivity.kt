@@ -34,7 +34,7 @@ class OurteamActivity : AppCompatActivity() {
                 "c1191520@bangkit.academy",
             ),
             DataParcel(
-                R.drawable.ic_smile ,
+                R.drawable.ervina ,
                 "Ervina Maharani",
                 "M0010018",
                 "m0010018@bangkit.academy"

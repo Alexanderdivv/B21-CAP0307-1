@@ -4,13 +4,13 @@
 
     <item
         android:id="@+id/camera"
-        android:icon="@drawable/camera_icon"
+        android:icon="@drawable/ic_camera"
         android:title="@string/camera"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/gallery"
-        android:icon="@drawable/add_photo_icon"
+        android:icon="@drawable/ic_add_photo"
         android:title="@string/camera"
         app:showAsAction="ifRoom"/>
 

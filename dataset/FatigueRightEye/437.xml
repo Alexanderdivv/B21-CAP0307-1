@@ -1,0 +1,26 @@
+<annotation>
+	<folder>FatigueRightEye</folder>
+	<filename>437.jpeg</filename>
+	<path>D:\Kodingan\Github\B21-CAP0307\B21-CAP0307\dataset\FatigueRightEye\437.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>64</width>
+		<height>32</height>
+		<depth>1</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>RightEyeFatigue</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>7</xmin>
+			<ymin>5</ymin>
+			<xmax>63</xmax>
+			<ymax>28</ymax>
+		</bndbox>
+	</object>
+</annotation>
