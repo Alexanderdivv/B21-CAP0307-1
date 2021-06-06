@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">FatigueApplication</string>
+    <string name="opening">Stay Focus and Keep Healty</string>
+    <string name="result">Result</string>
+    <string name="resultvalue">ResultValue</string>
+    <string name="identify">Identifying</string>
+    <string name="splashscreen">Splash Screen Activity</string>
+    <string name="introslider">Intro Slider Activity</string>
+    <string name="main">Main Activity</string>
+    <string name="menu">Menu</string>
+    <string name="notification">Notification</string>
+    <string name="ourteam">Team</string>
+    <string name="team">Team Member</string>
+    <string name="setting">Setting Notification</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Add Photos</string>
+    <string name="name">Name</string>
+    <string name="number">X0000000</string>
+    <string name="email">blablabla@bangkit.academy</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+</resources>
