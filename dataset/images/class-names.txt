@@ -1,0 +1,6 @@
+LeftEyeFatigue
+MouthFatigue
+RightEyeFatigue
+Non-LeftEyeFatigue
+Non-MouthFatigue
+Non-RightEyeFatigue

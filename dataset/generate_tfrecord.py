@@ -2,9 +2,9 @@
 Usage:
   # From tensorflow/models/
   # Create train data:
-  python generate_tfrecord.py --csv_input=images/train_labels.csv --image_dir=images/train --output_path=train.record
+  python generate_tfrecord.py --csv_input=data/train_labels.csv  --output_path=data/train.record
   # Create test data:
-  python generate_tfrecord.py --csv_input=images/test_labels.csv  --image_dir=images/test --output_path=test.record
+  python generate_tfrecord.py --csv_input=data/test_labels.csv  --output_path=data/test.record
 """
 from __future__ import division
 from __future__ import print_function
@@ -13,36 +13,36 @@ from __future__ import absolute_import
 import os
 import io
 import pandas as pd
-
-from tensorflow.python.framework.versions import VERSION
-import tensorflow.compat.v1 as tf
+import tensorflow as tf
 
 from PIL import Image
-from utils import dataset_util
+from object_detection.utils import dataset_util
 from collections import namedtuple, OrderedDict
 
-flags = tf.app.flags
+flags = tf.compat.v1.app.flags
 flags.DEFINE_string('csv_input', '', 'Path to the CSV input')
-flags.DEFINE_string('image_dir', '', 'Path to the image directory')
 flags.DEFINE_string('output_path', '', 'Path to output TFRecord')
+flags.DEFINE_string('image_dir', '', 'Path to images')
 FLAGS = flags.FLAGS
-
-
-
-file  = open(r"images/class-names.txt",'r')
-output_dict ={}
-classname = file.readline().strip()
-count=1
-while len(classname) >0 :
-    output_dict[classname] = count
-    classname = file.readline().strip()
-    count+=1
-file.close()
 
 
 # TO-DO replace this with label map
 def class_text_to_int(row_label):
-        return output_dict[row_label]
+    if row_label == 'LeftEyeFatigue':
+        return 1
+    elif row_label == 'MouthFatigue':
+        return 2
+    elif row_label == 'RightEyeFatigue':
+        return 3
+    elif row_label == 'Non-LeftEyeFatigue':
+        return 4
+    elif row_label == 'Non-MouthFatigue':
+        return 5
+    elif row_label == 'Non-RightEyeFatigue':
+        return 6    
+    else:
+        None
+
 
 def split(df, group):
     data = namedtuple('data', ['filename', 'object'])
@@ -51,7 +51,7 @@ def split(df, group):
 
 
 def create_tf_example(group, path):
-    with tf.gfile.GFile(os.path.join(path, '{}'.format(group.filename)), 'rb') as fid:
+    with tf.io.gfile.GFile(os.path.join(path, '{}'.format(group.filename)), 'rb') as fid:
         encoded_jpg = fid.read()
     encoded_jpg_io = io.BytesIO(encoded_jpg)
     image = Image.open(encoded_jpg_io)
@@ -92,9 +92,9 @@ def create_tf_example(group, path):
 
 
 def main(_):
-    writer = tf.python_io.TFRecordWriter(FLAGS.output_path)
-    path = os.path.join(os.getcwd(), FLAGS.image_dir)
-    examples = pd.read_csv(FLAGS.csv_input)
+    writer = tf.io.TFRecordWriter(FLAGS.output_path)
+    path = os.path.join(FLAGS.image_dir)
+    examples = pd.read_csv(FLAGS.csv_input)[['filename','class','xmin','ymin','xmax','ymax']]
     grouped = split(examples, 'filename')
     for group in grouped:
         tf_example = create_tf_example(group, path)
@@ -106,4 +106,4 @@ def main(_):
 
 
 if __name__ == '__main__':
-    tf.app.run()
+    tf.compat.v1.app.run()

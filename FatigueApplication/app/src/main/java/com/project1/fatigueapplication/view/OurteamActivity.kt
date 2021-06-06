@@ -16,20 +16,26 @@ class OurteamActivity : AppCompatActivity() {
 
         val datauser = listOf<DataParcel>(
             DataParcel(
-                R.drawable.ic_smile,
+                R.drawable.tyo,
                 "Adwityo S.P.",
                 "A1171500",
                 "a1171500@bangkit.academy"
             ),
             DataParcel(
-                R.drawable.ic_smile,
+                R.drawable.fikri,
                 "Fikri Aziz Athoillah",
                 "A1091430",
                 "a1091430@bangkit.academy"
             ),
             DataParcel(
-                R.drawable.ic_smile,
+                R.drawable.alex,
                 "Alexander Diva Grael Bangun",
+                "C1191520",
+                "c1191520@bangkit.academy",
+            ),
+            DataParcel(
+                R.drawable.ic_smile,
+                "Amar Ma'ruf",
                 "C1191520",
                 "c1191520@bangkit.academy",
             ),

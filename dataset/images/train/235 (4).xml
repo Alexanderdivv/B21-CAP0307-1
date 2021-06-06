@@ -1,0 +1,26 @@
+<annotation>
+	<folder>Non-FatigueLeftEye</folder>
+	<filename>235.jpeg</filename>
+	<path>D:\Kodingan\Github\B21-CAP0307\B21-CAP0307\dataset\Non-FatigueLeftEye\235.jpeg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>64</width>
+		<height>32</height>
+		<depth>1</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>Non-LeftEyeFatigue</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>3</xmin>
+			<ymin>3</ymin>
+			<xmax>59</xmax>
+			<ymax>32</ymax>
+		</bndbox>
+	</object>
+</annotation>
