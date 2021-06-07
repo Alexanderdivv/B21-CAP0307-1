@@ -5,10 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.project1.fatigueapplication.R
-import com.project1.fatigueapplication.data.IntroSlide
+import com.project1.fatigueapplication.data.viewdata.IntroSlider
 import com.project1.fatigueapplication.databinding.ItemSlideContainerBinding
 
-class IntroSliderAdapter(private val introSlides: List<IntroSlide>) :
+class IntroSliderAdapter(private val introSliders: List<IntroSlider>) :
     RecyclerView.Adapter<IntroSliderAdapter.IntoSlideViewHolder>() {
 
     inner class IntoSlideViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -18,19 +18,19 @@ class IntroSliderAdapter(private val introSlides: List<IntroSlide>) :
         private var textDesc = binding.tvDescriptionIntro
         private var ivSlideIcon = binding.ivSlideIconIntro
 
-        fun bind(introSlide: IntroSlide) {
-            textTitle.text = introSlide.title
-            textDesc.text = introSlide.description
-            ivSlideIcon.setImageResource(introSlide.icon)
+        fun bind(introSlider: IntroSlider) {
+            textTitle.text = introSlider.title
+            textDesc.text = introSlider.description
+            ivSlideIcon.setImageResource(introSlider.icon)
         }
     }
 
     override fun getItemCount(): Int {
-        return introSlides.size
+        return introSliders.size
     }
 
     override fun onBindViewHolder(holder: IntoSlideViewHolder, position: Int) {
-        holder.bind(introSlides[position])
+        holder.bind(introSliders[position])
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IntoSlideViewHolder {

@@ -1,14 +1,12 @@
 package com.project1.fatigueapplication.view.activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.project1.fatigueapplication.R
 import com.project1.fatigueapplication.adapter.DataAdapter
-import com.project1.fatigueapplication.data.DataParcel
+import com.project1.fatigueapplication.data.viewdata.DataParcel
 
 class OurteamActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

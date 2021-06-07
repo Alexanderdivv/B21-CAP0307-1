@@ -1,4 +1,4 @@
-package com.project1.fatigueapplication.data
+package com.project1.fatigueapplication.data.viewdata
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

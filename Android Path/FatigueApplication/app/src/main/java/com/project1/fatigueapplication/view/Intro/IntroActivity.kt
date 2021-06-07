@@ -12,7 +12,7 @@ import androidx.core.view.get
 import androidx.viewpager2.widget.ViewPager2
 import com.project1.fatigueapplication.R
 import com.project1.fatigueapplication.adapter.IntroSliderAdapter
-import com.project1.fatigueapplication.data.IntroSlide
+import com.project1.fatigueapplication.data.viewdata.IntroSlider
 import com.project1.fatigueapplication.databinding.ActivityIntroBinding
 import com.project1.fatigueapplication.view.activity.MainActivity
 
@@ -47,17 +47,17 @@ class IntroActivity : AppCompatActivity() {
 
     private val introSliderAdapter = IntroSliderAdapter(
         listOf(
-            IntroSlide(
+            IntroSlider(
                 "B21-CAP0307",
                 "Bangkit Capstone Projects",
                 R.drawable.bangkit
             ),
-            IntroSlide(
+            IntroSlider(
                 "Capture or Add Photo",
                 "Analyze your conditions using photo",
                 R.drawable.ic_smile
             ),
-            IntroSlide(
+            IntroSlider(
                 "Start Live Screening",
                 "Observe your conditions in real-time",
                 R.drawable.ic_smile

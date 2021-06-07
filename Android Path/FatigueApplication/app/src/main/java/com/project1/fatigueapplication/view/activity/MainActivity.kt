@@ -9,24 +9,35 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.ViewModelProvider
 import com.project1.fatigueapplication.R
+import com.project1.fatigueapplication.data.api.Resource
+import com.project1.fatigueapplication.databinding.ActivityMainBinding
+import com.project1.fatigueapplication.viewmodel.MainActivityViewModel
 
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        private val PERMISSION_CODE = 400
-        private val CAMERA_CAPTURE_CODE = 401
-        private val GALLERY_PICK_CODE = 402
+        private const val PERMISSION_CODE = 400
+        private const val CAMERA_CAPTURE_CODE = 401
+        private const val GALLERY_PICK_CODE = 402
     }
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var viewModel: MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
         val string: String= getString(R.string.main)
         Toast.makeText(this,string, Toast.LENGTH_SHORT).show()
@@ -35,6 +46,20 @@ class MainActivity : AppCompatActivity() {
         val text: TextView = findViewById(R.id.textViewmb)
         val string0: String= getString(R.string.identify)
 
+        viewModel.uploadPhoto.observe(this) {
+            when (it) {
+                is Resource.Success -> {
+                    binding.progressCircular.visibility = View.GONE
+                }
+                is Resource.Loading -> {
+                    binding.progressCircular.visibility = View.VISIBLE
+                }
+                is Resource.Error -> {
+                    binding.progressCircular.visibility = View.GONE
+                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
         button.setOnClickListener {
             text.setText(string0)
             Toast.makeText(this,string0, Toast.LENGTH_SHORT).show()
@@ -54,9 +79,11 @@ class MainActivity : AppCompatActivity() {
         if(requestCode == CAMERA_CAPTURE_CODE) {
             val picture = data?.getParcelableExtra<Bitmap>("data")
             imageView.setImageBitmap(picture)
+            picture?.let { viewModel.upload(it) }
         }
         else if(resultCode == Activity.RESULT_OK && requestCode == GALLERY_PICK_CODE){
             imageView.setImageURI(data?.data)
+
         }
     }
 

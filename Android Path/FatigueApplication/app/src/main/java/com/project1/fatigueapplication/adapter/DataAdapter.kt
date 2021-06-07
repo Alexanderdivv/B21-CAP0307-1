@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.project1.fatigueapplication.R
-import com.project1.fatigueapplication.data.DataParcel
+import com.project1.fatigueapplication.data.viewdata.DataParcel
 
 class DataAdapter(
     private val context: Context,
