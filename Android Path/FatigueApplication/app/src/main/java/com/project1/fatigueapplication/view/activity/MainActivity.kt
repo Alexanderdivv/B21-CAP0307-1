@@ -1,6 +1,7 @@
 package com.project1.fatigueapplication.view.activity
 
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -10,9 +11,7 @@ import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
@@ -42,10 +41,21 @@ class MainActivity : AppCompatActivity() {
         val string: String= getString(R.string.main)
         Toast.makeText(this,string, Toast.LENGTH_SHORT).show()
 
-        val button: Button = findViewById(R.id.buttonmb)
-        val text: TextView = findViewById(R.id.textViewmb)
         val string0: String= getString(R.string.identify)
 
+        binding.buttonmb.setOnClickListener {
+            binding.textViewmb.setText(string0)
+            Toast.makeText(this,string0, Toast.LENGTH_SHORT).show()
+
+        }
+        binding.imageView.setOnClickListener {
+            if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) !=PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), PERMISSION_CODE)
+            }
+
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            startActivityForResult(intent, CAMERA_CAPTURE_CODE)
+        }
         viewModel.uploadPhoto.observe(this) {
             when (it) {
                 is Resource.Success -> {
@@ -60,12 +70,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        button.setOnClickListener {
-            text.setText(string0)
-            Toast.makeText(this,string0, Toast.LENGTH_SHORT).show()
-        }
     }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.option, menu)
         return super.onCreateOptionsMenu(menu)
@@ -77,13 +82,14 @@ class MainActivity : AppCompatActivity() {
         val imageView : ImageView = findViewById(R.id.imageView)
 
         if(requestCode == CAMERA_CAPTURE_CODE) {
-            val picture = data?.getParcelableExtra<Bitmap>("data")
+            val picture = data?.extras?.get("data") as Bitmap
             imageView.setImageBitmap(picture)
-            picture?.let { viewModel.upload(it) }
+            viewModel.upload(picture)
         }
         else if(resultCode == Activity.RESULT_OK && requestCode == GALLERY_PICK_CODE){
             imageView.setImageURI(data?.data)
-
+            val picture = data?.extras?.get("ImageURI") as Bitmap
+            viewModel.upload(picture)
         }
     }
 
@@ -95,7 +101,6 @@ class MainActivity : AppCompatActivity() {
                 if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) !=PackageManager.PERMISSION_GRANTED){
                     ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), PERMISSION_CODE)
                 }
-
                 val intent = Intent(Intent.ACTION_PICK)
                 intent.type = "image/*"
                 startActivityForResult(intent, GALLERY_PICK_CODE)

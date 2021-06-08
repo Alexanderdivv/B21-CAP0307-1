@@ -7,6 +7,6 @@ import retrofit2.http.POST
 interface ApiService {
 
     @POST("predict")
-    fun getVerdict(@Body body: MLRequest): Call<List<MLResponses>>
+    fun getVerdict(@Body body: MLRequest): Call<List<MLResponse>>
 
 }
