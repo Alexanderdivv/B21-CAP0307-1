@@ -19,7 +19,7 @@ Working in:
     [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)<br>
    The fatigue detection model that has passed the training and testing stages will be converted into h5 format and will be deployed to __Cloud Storage__. The request will come in by hitting the HTTP endpoint provided by __Cloud Function__, this service will work by receiving and processing data with the help of a model that is downloaded and stored as a blob in GCF.<br>
 Please go to the following [link for another explanation and how to do it.](https://github.com/AdwityoSP/B21-CAP0307/tree/main/Cloud%20Path/CloudFunction)<br>
-As another option we also provide deployment model into __Google Compute Engine__.
+As another option we also provide deployment model into __Google Compute Engine__ [go to this link to see](https://github.com/Alexanderdivv/GCE-ml-fatiguedetect).
 
 2. __Maintenance services in GCP.__<br>
    Monitoring services used using Cloud Monitoring, view log in each services and setup billing to prevent excessive sudden bills. Control is carried out while the project is in progress.<br>
