@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         val string: String= getString(R.string.main)
         Toast.makeText(this,string, Toast.LENGTH_SHORT).show()
 
-        val string0: String= getString(R.string.identify)
+        val string0: String= getString(R.string.test)
 
         binding.buttonmb.setOnClickListener {
             binding.textViewmb.setText(string0)

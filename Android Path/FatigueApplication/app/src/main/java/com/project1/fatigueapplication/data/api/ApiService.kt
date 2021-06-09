@@ -8,5 +8,4 @@ interface ApiService {
 
     @POST("predict")
     fun getVerdict(@Body body: MLRequest): Call<List<MLResponse>>
-
 }

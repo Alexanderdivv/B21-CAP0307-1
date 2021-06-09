@@ -31,18 +31,6 @@ class OurteamActivity : AppCompatActivity() {
                 "Alexander Diva Grael Bangun",
                 "C1191520",
                 "c1191520@bangkit.academy",
-            ),
-            DataParcel(
-                R.drawable.ic_smile,
-                "Amar Ma'ruf",
-                "C1191520",
-                "c1191520@bangkit.academy",
-            ),
-            DataParcel(
-                R.drawable.ervina ,
-                "Ervina Maharani",
-                "M0010018",
-                "m0010018@bangkit.academy"
             )
         )
         val recyclerView = findViewById<RecyclerView>(R.id._imageRecyclerView)
